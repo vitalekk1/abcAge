@@ -19,7 +19,7 @@ class ShowPriceProduct extends Controller
         $price = 0;
         if (Shipment::where('date', $date)->count()) {
             $supply = Supply::where('id', Shipment::where('date', $date)->first()['supply_id'])->first();
-            $price = $supply['price'] / $supply['count'];
+            $price = 1.3 * $supply['price'] / $supply['count'];
         }
 
         return view('show', compact('supplies', 'date', 'price'));
